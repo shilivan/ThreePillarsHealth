@@ -1,9 +1,19 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+#chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }
-h1 {
-    color: #333;
+#messages {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#user-input {
+    width: calc(100% - 70px);
+    padding: 10px;
+    margin-right: 10px;
 }
