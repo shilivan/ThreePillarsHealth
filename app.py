@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify
 import openai
+import os
+import asyncio
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Replace 'your-openai-api-key' with your actual OpenAI API key
-openai.api_key = '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'
+openai.api_key = os.getenv('THREEPILLARSHEALTH')
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -16,6 +17,16 @@ def chat():
         max_tokens=150
     )
     return jsonify({'response': response.choices[0].text.strip()})
+
+async def async_function():
+    await asyncio.sleep(1)
+    return "Async Response"
+
+@app.route('/async')
+def handle_async():
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(async_function())
+    return result
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
