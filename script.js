@@ -8,7 +8,7 @@ async function sendMessage() {
     userMessageDiv.textContent = `You: ${userInput}`;
     messagesDiv.appendChild(userMessageDiv);
 
-    // Send message to backend
+    // Send message to the bot
     const response = await fetch('https://chatgpt.com/g/g-MZFVy17Hl-tcm-study-buddy', {
         method: 'POST',
         headers: {
@@ -19,7 +19,7 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    // Display GPT response
+    // Display bot response
     const botMessageDiv = document.createElement('div');
     botMessageDiv.textContent = `TCM Study Buddy: ${data.response}`;
     messagesDiv.appendChild(botMessageDiv);
