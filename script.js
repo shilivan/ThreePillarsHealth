@@ -9,7 +9,7 @@ async function sendMessage() {
     messagesDiv.appendChild(userMessageDiv);
 
     // Send message to backend
-    const response = await fetch('https://your-backend-url/chat', {
+    const response = await fetch('https://chatgpt.com/g/g-MZFVy17Hl-tcm-study-buddy', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
