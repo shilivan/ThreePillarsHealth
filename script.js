@@ -11,14 +11,14 @@ async function sendMessage() {
     try {
         console.log(`Sending message: ${userInput}`);
 
-        // Fetch the GPT API URL from environment variable
-        const response = await fetch('/api-url', {
+        // Fetch the GPT API URL from the backend
+        const urlResponse = await fetch('/api-url', {
             method: 'GET'
         });
-        const { apiUrl } = await response.json();
+        const { apiUrl } = await urlResponse.json();
 
         // Send message to the bot
-        const botResponse = await fetch(apiUrl, {
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,11 +26,11 @@ async function sendMessage() {
             body: JSON.stringify({ message: userInput })
         });
 
-        if (!botResponse.ok) {
-            throw new Error(`HTTP error! status: ${botResponse.status}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await botResponse.json();
+        const data = await response.json();
         console.log(`Received response: ${data.response}`);
 
         // Display bot response
