@@ -15,6 +15,9 @@ async function sendMessage() {
         const urlResponse = await fetch('/api-url', {
             method: 'GET'
         });
+        if (!urlResponse.ok) {
+            throw new Error(`HTTP error! status: ${urlResponse.status}`);
+        }
         const { apiUrl } = await urlResponse.json();
 
         // Send message to the bot
